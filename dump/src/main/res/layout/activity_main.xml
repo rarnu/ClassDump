@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+    <Button
+            android:id="@+id/btnChooseApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_choose_app"
+            android:background="@null"/>
+
+    <RelativeLayout
+            android:id="@+id/laySelected"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_margin="4dip"
+            android:padding="1px"
+            android:background="@android:color/darker_gray"
+            android:layout_below="@+id/btnChooseApp"
+            android:visibility="gone">
+        <include
+                android:id="@+id/layAppItem"
+                layout="@layout/item_app"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_below="@+id/layAppItem"
+                        android:background="@android:color/white">
+
+            <TextView
+                    android:id="@+id/tvFilter"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/text_filter"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="4dip"
+                    android:paddingRight="4dip"
+                    android:layout_centerVertical="true"
+            />
+            <EditText
+                    android:id="@+id/edtFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tvFilter"
+                    android:hint="@string/edit_hint_package_filter"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:id="@+id/svLog"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:layout_below="@+id/laySelected"
+            android:layout_above="@+id/layBottom">
+        <TextView
+                android:id="@+id/tvLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left|top"/>
+    </ScrollView>
+
+    <RelativeLayout
+            android:id="@+id/layBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone">
+
+        <Button
+                android:id="@+id/btnDump"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@string/btn_start_dump"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

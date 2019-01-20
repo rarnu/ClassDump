@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ClassDump</string>
+    <string name="title_choose_app">Choose App</string>
+
+    <string name="text_filter">Filter</string>
+
+    <string name="btn_choose_app">Choose Installed App</string>
+    <string name="btn_start_dump">Start Dump</string>
+    <string name="btn_stop_dump">Stop Dump</string>
+
+    <string name="edit_hint_package_filter">package name filter</string>
+
+    <string name="menu_info">Info</string>
+
+    <string name="alert_title">Information</string>
+    <string name="alert_message">Class Dump v1.0\nhttp://github.com/rarnu/ClassDump\n</string>
+    <string name="alert_ok">OK</string>
+</resources>
