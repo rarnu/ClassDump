@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
@@ -31,6 +33,14 @@ class ChooseAppActivity: Activity(), AdapterView.OnItemClickListener {
         lvApp.adapter = adapter
 
         lvApp.onItemClickListener = this
+        edtFilter.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                adapter.filter(edtFilter.text.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -57,14 +67,14 @@ class ChooseAppActivity: Activity(), AdapterView.OnItemClickListener {
 
         override fun getAdapterLayout() = R.layout.item_app
 
-        override fun getValueText(item: ApplicationInfo) = ""
+        override fun getValueText(item: ApplicationInfo) = item.packageName + item.loadLabel(packageManager)
 
         override fun newHolder(baseView: View) = AppHolder(baseView)
 
         inner class AppHolder(v: View) {
-            val tvAppName = v.tvAppName
-            val tvAppPackage = v.tvAppPackage
-            val ivIcon = v.ivIcon
+            internal val tvAppName = v.tvAppName
+            internal val tvAppPackage = v.tvAppPackage
+            internal val ivIcon = v.ivIcon
         }
 
     }
