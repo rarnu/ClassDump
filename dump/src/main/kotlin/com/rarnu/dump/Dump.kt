@@ -60,7 +60,7 @@ object Dump {
                         try { clz.declaredFields } catch (t: Throwable) { null }?.forEach { f -> str += "${f.name}:${f.type.name}\n" }
                         try { clz.declaredMethods } catch (t: Throwable) {null}?.forEach { m ->
                             str += "${m.name}("
-                            m.parameterTypes?.forEach { p -> str += "${p.name}," }
+                            m.parameterTypes.forEach { p -> str += "${p.name}," }
                             str = str.trimEnd(',')
                             str += "):${m.returnType.name}\n"
                         }

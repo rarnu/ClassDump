@@ -1,23 +1,20 @@
 package com.rarnu.dump
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
+import com.rarnu.kt.android.BackActivity
 import com.rarnu.kt.android.BaseAdapter
 import com.rarnu.kt.android.resStr
-import com.rarnu.kt.android.showActionBack
 import kotlinx.android.synthetic.main.activity_chooseapp.*
 import kotlinx.android.synthetic.main.item_app.view.*
-import kotlin.jvm.internal.Ref
 
-class ChooseAppActivity: Activity(), AdapterView.OnItemClickListener {
+class ChooseAppActivity: BackActivity(), AdapterView.OnItemClickListener {
 
     private lateinit var list: MutableList<ApplicationInfo>
     private lateinit var adapter: AppAdapter
@@ -25,8 +22,7 @@ class ChooseAppActivity: Activity(), AdapterView.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chooseapp)
-        actionBar.title = resStr(R.string.title_choose_app)
-        showActionBack()
+        actionBar?.title = resStr(R.string.title_choose_app)
 
         list = packageManager.getInstalledApplications(0)
         adapter = AppAdapter(this, list)
@@ -41,13 +37,6 @@ class ChooseAppActivity: Activity(), AdapterView.OnItemClickListener {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> finish()
-        }
-        return true
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

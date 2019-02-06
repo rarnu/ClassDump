@@ -31,7 +31,7 @@ class MainActivity : Activity() {
         }
 
         btnChooseApp.setOnClickListener { startActivityForResult(Intent(this, ChooseAppActivity::class.java), reqIdChooseApp) }
-        btnDump.setOnClickListener { it ->
+        btnDump.setOnClickListener {
             if (Dump.isRunning) {
                 Dump.isRunning = false
                 btnDump.text = resStr(R.string.btn_start_dump)
@@ -85,16 +85,6 @@ class MainActivity : Activity() {
         }
 
     }
-
-
-    /*
-    Dump.dump(this, wxPath, "com.tencent", "wxdump", {
-
-            }, {
-
-            })
-     */
-
 
 }
 
